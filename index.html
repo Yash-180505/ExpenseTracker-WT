@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Expense Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="pblfinal.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header-section">
+      <h2>Expense Tracker</h2>
+      <button id="printButton" onclick="printPage()">🖨️ Print Summary</button>
+    </div>
+
+    <div class="dashboard-grid">
+      
+      <!-- Panel 1: Forms -->
+      <div class="panel">
+        <h3>Add Funds</h3>
+        <div class="input-group">
+          <label for="totalAmount">Initial Budget Amount</label>
+          <input type="number" id="totalAmount" placeholder="Enter initial budget" />
+          <button onclick="setTotalAmount()">Set Budget</button>
+        </div>
+
+        <div class="input-group">
+          <label for="saving-amount">Additional Income</label>
+          <input type="number" id="saving-amount" placeholder="Enter amount" />
+          <button onclick="addSaving()">Add Savings</button>
+        </div>
+
+        <h3>Add Expense</h3>
+        <form id="form">
+          <div class="input-group">
+            <label for="text">Expense Description</label>
+            <input type="text" id="text" placeholder="e.g. Groceries, Rent" />
+          </div>
+          <div class="input-group">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" placeholder="Enter amount spent" />
+          </div>
+          <div class="input-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" />
+          </div>
+          <div class="input-group">
+            <button onclick="submitExpense(event)">Add Expense</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Panel 2: Overview & Chart -->
+      <div class="panel stats-panel">
+        <div class="balance-container">
+          <h4>Your Balance</h4>
+          <h1 id="balance">₹0.00</h1>
+        </div>
+
+        <div class="inc-exp-container">
+          <div>
+            <h4>Income</h4>
+            <p id="money-plus" class="money-plus">₹0.00</p>
+          </div>
+          <div>
+            <h4>Expense</h4>
+            <p id="money-minus" class="money-minus">₹0.00</p>
+          </div>
+        </div>
+
+        <div class="monthly-summary">
+          <h4>This Month's Total Spending</h4>
+          <p id="monthly-total" class="money">₹0.00</p>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="chart"></canvas>
+        </div>
+      </div>
+
+      <!-- Panel 3: History -->
+      <div class="panel history-panel">
+        <h3>Transaction History</h3>
+        <ul id="list" class="list"></ul>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="pblfinal.js"></script>
+</body>
+</html>
